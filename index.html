@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Generator</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        #colorDisplay {
+            width: 150px;
+            height: 150px;
+            border: 2px solid black;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #hexCode {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Color Generator</h1>
+
+    <div id="colorDisplay"></div>
+    <button onclick="generateColor()">Generate Color</button>
+    <div id="hexCode">#ffffff</div>
+
+
+    <script>
+        function generateColor() {
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+
+            const hexR = r.toString(16).padStart(2, '0');
+            const hexG = g.toString(16).padStart(2, '0');
+            const hexB = b.toString(16).padStart(2, '0');
+
+
+            const hexColor = `#${hexR}${hexG}${hexB}`;
+
+            document.getElementById('colorDisplay').style.backgroundColor = hexColor;
+            document.getElementById('hexCode').textContent = hexColor;
+        }
+
+        // Initial color on load
+        generateColor();
+
+    </script>
+
+</body>
+</html>
